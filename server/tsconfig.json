@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    // Project structure
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Runtime + Module System
+    "module": "nodenext",
+    "target": "esnext",
+    "moduleResolution": "nodenext",
+    "lib": ["esnext"],
+    "types": ["node"],
+
+    // Output types
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Strict mode (keep it strict, your stack needs it)
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+
+    // ESM imports
+    "verbatimModuleSyntax": true,
+
+    // Performance
+    "skipLibCheck": true
+  },
+
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
