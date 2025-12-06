@@ -5,7 +5,7 @@ import cors from "cors";
 const app: Application = express();
 
 // PORT handling
-const PORT = Number(process.env.PORT || "8080");
+const PORT: number = Number(process.env.PORT || "8080");
 
 if (isNaN(PORT) || PORT <= 0) {
   throw new Error("Invalid PORT number in environment variables");
