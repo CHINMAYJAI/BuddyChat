@@ -30,6 +30,6 @@
     "skipLibCheck": true
   },
 
-  "include": ["src", "load-env.js"],
+  "include": ["src", "load-env.js", "config.ts"],
   "exclude": ["node_modules"]
 }
