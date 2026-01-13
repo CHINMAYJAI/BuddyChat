@@ -5,6 +5,7 @@
   "main": "server.ts",
   "type": "module",
   "scripts": {
+    "test:db": "tsx tests/db.connection.test.ts",
     "build": "tsc -b",
     "start": "node --import ./load-env.js dist/server.js",
     "dev": "nodemon --watch src --exec node --import ./load-env.js --loader ts-node/esm src/server.ts"
@@ -31,6 +32,7 @@
     "drizzle-orm": "^0.45.0",
     "express": "^5.2.1",
     "mongoose": "^9.0.1",
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "redis": "^5.10.0"
   }
 }
