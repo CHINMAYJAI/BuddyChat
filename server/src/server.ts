@@ -6,34 +6,46 @@ import {
   shutRedisConnection,
 } from "./lib/db/index.db.js";
 import type { Server } from "http";
+import { config } from "./utils/validateEnvVariables.utils.js";
 
 dotenv.config();
 
 // PORT handling
-const PORT: number = Number(process.env.PORT || "8080");
-
-if (isNaN(PORT) || PORT <= 0) {
-  throw new Error("Invalid PORT number in environment variables");
-}
+const PORT: number = Number(config.app.PORT || "8080");
 
 const server: Server = app.listen(PORT, () => {
   console.log(`Server listening on PORT: ${PORT}`);
 });
 
 // graceful shutdown
+let isShuttingDown = false;
 const shutdown = async (): Promise<void> => {
+  if (isShuttingDown) return;
+  isShuttingDown = true;
+
   console.log("Shutting down...");
 
-  server.close(async () => {
-    await Promise.allSettled([
-      shutMongoConnection(),
-      shutPostgresConnection(),
-      shutRedisConnection(),
-    ]);
-    console.log("All Server Closed!");
-    setTimeout(() => process.exit(0), 100); // time to flush logs and finish cleanups
+  // wait for server to stop accepting new connections
+  await new Promise<void>((resolve) => server.close(() => resolve()));
+
+  // run DB shutdowns and report each result explicitly
+  const results = await Promise.allSettled([
+    shutMongoConnection(),
+    shutPostgresConnection(),
+    shutRedisConnection(),
+  ]);
+
+  const names = ["Mongo", "Postgres", "Redis"];
+  results.forEach((r, i) => {
+    if (r.status === "fulfilled") {
+      console.log(`${names[i]} shutdown successful`);
+    } else {
+      console.error(`${names[i]} shutdown failed`, r.reason);
+    }
   });
 
+  console.log("All Server Closed!");
+  setTimeout(() => process.exit(0), 100); // time to flush logs and finish cleanups
 };
 
 // signals
