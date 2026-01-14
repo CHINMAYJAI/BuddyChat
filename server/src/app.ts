@@ -1,15 +1,12 @@
 import express from "express";
 import type { Application, Request, Response } from "express";
 import cors from "cors";
+import { config } from "./utils/validateEnvVariables.utils.js";
 
 const app: Application = express();
 
 // cors handling and whitelisting
-const FRONTEND_URL = process.env.CORS_ORIGIN;
-
-if (!FRONTEND_URL) {
-  throw new Error("CORS_ORIGIN is missing in environment variables");
-}
+const FRONTEND_URL = config.app.CORS_ORIGIN;
 
 const whitelist: string[] = [FRONTEND_URL];
 
@@ -32,7 +29,7 @@ app.use(express.json());
 
 // health check
 app.get("/health", (req: Request, res: Response) => {
-  res.json({ status: 'ok' });
+  res.json({ status: "ok" });
 });
 
 export { app };

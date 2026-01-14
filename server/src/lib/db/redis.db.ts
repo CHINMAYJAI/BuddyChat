@@ -1,4 +1,5 @@
 import { createClient, type RedisClientType } from "redis";
+import { config } from "../../utils/validateEnvVariables.utils.js";
 
 let redis: RedisClientType | null = null;
 
@@ -7,12 +8,16 @@ export const redisConnectionDB = async (): Promise<RedisClientType> => {
   if (redis) return redis; // singleton
 
   redis = createClient({
-    url: process.env.REDIS_URL || "redis://127.0.0.1:6379",
+    url: config.redis.URL || "redis://127.0.0.1:6379",
     socket: {
       reconnectStrategy: (retries) => Math.min(retries * 100, 3000),
     },
-    ...(process.env.REDIS_USERNAME && { username: process.env.REDIS_USERNAME }),
-    ...(process.env.REDIS_PASSWORD && { password: process.env.REDIS_PASSWORD }),
+    ...(config.redis.USERNAME && {
+      username: config.redis.USERNAME,
+    }),
+    ...(config.redis.PASSWORD && {
+      password: config.redis.PASSWORD,
+    }),
   });
 
   redis.on("error", (err) => {
@@ -31,5 +36,4 @@ export const shutRedisConnection = async () => {
   if (!redis) return;
   await redis.quit();
   redis = null; // cleanup
-  console.log("Redis connection closed");
 };
