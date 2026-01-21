@@ -14,7 +14,7 @@ const whitelist: string[] = [FRONTEND_URL];
 const corsOptions = {
   origin: (
     origin: string | undefined,
-    callback: (err: Error | null, allow?: boolean) => void
+    callback: (err: Error | null, allow?: boolean) => void,
   ) =>
     !origin || whitelist.includes(origin)
       ? callback(null, true)
@@ -26,6 +26,11 @@ const corsOptions = {
 // middlewares
 app.use(cors(corsOptions));
 app.use(express.json());
+
+// route redirect
+app.get("/", (req: Request, res: Response) => {
+  res.redirect("/health");
+});
 
 // health check
 app.get("/health", (req: Request, res: Response) => {
