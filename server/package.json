@@ -6,31 +6,36 @@
   "type": "module",
   "scripts": {
     "test:db": "tsx tests/db.connection.test.ts",
-    "build": "tsc -b",
-    "start": "node --import ./load-env.js dist/server.js",
-    "dev": "nodemon --watch src --exec node --import ./load-env.js --loader ts-node/esm src/server.ts"
+    "build": "rm -rf dist && tsc -b",
+    "start": "node dist/server.js",
+    "dev": "nodemon --watch src --exec tsx src/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.24.0",
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^24.10.1",
     "@types/pg": "^8.15.6",
     "drizzle-kit": "^0.31.8",
     "nodemon": "^3.1.11",
-    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.0",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "google-auth-library": "^10.5.0",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.1",
     "pg": "^8.16.3",
     "redis": "^5.10.0"
