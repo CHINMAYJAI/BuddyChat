@@ -1,3 +1,4 @@
+import { redisConnectionDB } from "../../lib/db/redis.db.js";
 import { Router } from "express";
 import type { Router as ExpressRouter, Request, Response } from "express";
 import { handleGoogleCallback } from "../../services/auth/index.auth.service.js";
@@ -10,7 +11,23 @@ googleCallbackRouter.get(
   "/google/callback",
   googleCallbackRateLimiter,
   async (req: Request, res: Response) => {
-    const code = req.query.code;
+    const { code, state } = req.query as { code?: string; state?: string };
+
+    // validate state
+    if (!state || typeof state !== "string") {
+      return res
+        .status(403)
+        .json({ error: "CSRF validation failed: missing state" });
+    }
+
+    const redisClient = await redisConnectionDB();
+
+    const storedState = await redisClient.get(`oauth_state:${state}`);
+    if (!storedState)
+      return res.status(403).json({ error: "CSRF validation failed" });
+
+    // single-use
+    await redisClient.del(`oauth_state:${state}`);
 
     // Reject anything that is not a valid OAuth callback
     if (!code || typeof code !== "string") {

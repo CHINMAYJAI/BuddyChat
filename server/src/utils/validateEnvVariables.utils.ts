@@ -47,6 +47,10 @@ export const config = {
   cookies: {
     EXPIRES_IN: required("COOKIES_EXPIRES_IN"),
   },
+
+  oauth: {
+    STATE_TTL_SECONDS: required("OAUTH_STATE_TTL_SECONDS"),
+  },
 };
 
 if (Number.isNaN(config.app.PORT)) throw new Error("PORT must be a number");
