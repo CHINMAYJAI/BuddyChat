@@ -1,7 +1,7 @@
 import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { readFileSync } from "fs";
-import { config } from "../../utils/validateEnvVariables.utils.js";
+import { config } from "../../utils/index.utils.js";
 
 let pool: Pool | null = null;
 let db: ReturnType<typeof drizzle> | null = null;

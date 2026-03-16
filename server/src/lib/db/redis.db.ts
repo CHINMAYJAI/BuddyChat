@@ -1,5 +1,5 @@
 import { createClient, type RedisClientType } from "redis";
-import { config } from "../../utils/validateEnvVariables.utils.js";
+import { config } from "../../utils/index.utils.js";
 
 let redis: RedisClientType | null = null;
 

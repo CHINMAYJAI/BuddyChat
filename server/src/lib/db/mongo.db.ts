@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { config } from "../../utils/validateEnvVariables.utils.js";
+import { config } from "../../utils/index.utils.js";
 
 const MONGO_URI: string = process.env.MONGO_URI as string;
 

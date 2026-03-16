@@ -2,7 +2,7 @@ import express from "express";
 import type { Application, Request, Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { config } from "./utils/validateEnvVariables.utils.js";
+import { config } from "./utils/index.utils.js";
 import {
   googleAuthRouter,
   googleCallbackRouter,

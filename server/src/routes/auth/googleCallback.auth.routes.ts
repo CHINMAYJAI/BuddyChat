@@ -1,4 +1,4 @@
-import { redisConnectionDB } from "../../lib/db/redis.db.js";
+import { redisConnectionDB } from "../../lib/db/index.db.js";
 import { Router } from "express";
 import type { Router as ExpressRouter, Request, Response } from "express";
 import { handleGoogleCallback } from "../../services/auth/index.auth.service.js";

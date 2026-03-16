@@ -48,12 +48,18 @@ export const config = {
         EXPIRES_IN: required("JWT_EXPIRES_IN"),
     },
 
+    rateLimiter: {
+        WINDOW_MS: required("WINDOW_MS"),
+        REQUEST_PER_WINDOW: required("REQUEST_PER_WINDOW"),
+    },
+
     cookies: {
         EXPIRES_IN: required("COOKIES_EXPIRES_IN"),
     },
 
-    oauth: {
-        STATE_TTL_SECONDS: required("OAUTH_STATE_TTL_SECONDS"),
+    ttl: {
+        OAUTH_STATE_TTL_SECONDS: required("OAUTH_STATE_TTL_SECONDS"),
+        REDIS: required("REDIS_TTL"),
     },
 };
 

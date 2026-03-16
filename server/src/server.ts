@@ -7,7 +7,7 @@ import {
   shutRedisConnection,
 } from "./lib/db/index.db.js";
 import type { Server } from "http";
-import { config } from "./utils/validateEnvVariables.utils.js";
+import { config } from "./utils/index.utils.js";
 
 dotenv.config();
 
