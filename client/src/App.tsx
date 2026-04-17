@@ -1,6 +1,7 @@
 import "./App.css";
+import type { JSX } from "react";
 
-function App() {
+function App(): JSX.Element {
     return <></>;
 }
 
