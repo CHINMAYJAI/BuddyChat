@@ -1,19 +1,20 @@
 .delete-icon {
-    width: 24px;
-    height: 24px;
+    width: 1em;
+    height: 1em;
 }
 
 .bin-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 55px;
-    height: 55px;
-    border-radius: 15px;
+    width: 2.25em;
+    height: 2.25em;
+    border-radius: 0.625em;
     background-color: rgb(255, 95, 95);
     cursor: pointer;
-    border: 3px solid rgb(255, 201, 201);
+    border: 0.125em solid rgb(255, 201, 201);
     transition-duration: 0.3s;
+    flex-shrink: 0;
 }
 
 .bin-button:hover {
