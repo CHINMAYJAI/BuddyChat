@@ -1,4 +1,4 @@
-import "./navbar.css";
+import styles from "./navbar.module.css";
 import {
     InfoIcon,
     FriendChatIcon,
@@ -16,25 +16,19 @@ import {
 import { JSX, useState, useEffect, useRef } from "react";
 
 const Navbar: React.FC = () => {
-    // useState hook
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
     const [mobileSubOpen, setMobileSubMenuOpen] = useState<boolean>(false);
     const [desktopMenuOpen, setDesktopMenuOpen] = useState<boolean>(false);
     const [desktopSubOpen, setDesktopSubMenuOpen] = useState<boolean>(false);
     const [searchOpen, setSearchOpen] = useState<boolean>(false);
 
-    // dropdown menu should be close whenever user clicks outside it for better user experience
-
-    // useRef hook
     const mobileMenuRef = useRef<HTMLDivElement | null>(null);
     const desktopMenuRef = useRef<HTMLDivElement | null>(null);
 
-    // useEffect
     useEffect(() => {
         const closeDropDownMenu = (event: MouseEvent) => {
             const target = event.target as Node;
-            // menubar
-            // if renders on mobile
+
             if (
                 mobileMenuRef.current &&
                 !mobileMenuRef.current.contains(target)
@@ -42,7 +36,7 @@ const Navbar: React.FC = () => {
                 setMobileSubMenuOpen(false);
                 setMobileMenuOpen(false);
             }
-            // if renders on desktop
+
             if (
                 desktopMenuRef.current &&
                 !desktopMenuRef.current.contains(target)
@@ -51,14 +45,13 @@ const Navbar: React.FC = () => {
                 setDesktopMenuOpen(false);
             }
         };
+
         document.addEventListener("mousedown", closeDropDownMenu);
-        // cleanup
         return () => {
             document.removeEventListener("mousedown", closeDropDownMenu);
         };
     }, []);
 
-    // handlers
     const openDesktopSubMenu = (): void => setDesktopSubMenuOpen(true);
     const openMobileSubMenu = (): void => setMobileSubMenuOpen(true);
 
@@ -67,28 +60,27 @@ const Navbar: React.FC = () => {
 
     type MenuRenderer = () => JSX.Element | null;
 
-    // main menu
     const desktopMenu: MenuRenderer = () => {
         if (!desktopMenuOpen || desktopSubOpen) return null;
 
         return (
-            <div className="dropdown-menu dropdown-right">
-                <div className="dropdown-profile">
-                    <div className="profile-circle-small" />
+            <div className={`${styles.dropdown_menu} ${styles.dropdown_right}`}>
+                <div className={styles.dropdown_profile}>
+                    <div className={styles.profile_circle_small} />
                     <span>My Profile</span>
 
                     <button
-                        className="arrow-btn forward-btn"
+                        className={`${styles.arrow_btn} ${styles.forward_btn}`}
                         onClick={openDesktopSubMenu}
                     >
                         <img src={forwardArrowIcon} alt="forward" />
                     </button>
                 </div>
 
-                <div className="dropdown-divider" />
+                <div className={styles.dropdown_divider} />
 
                 <button
-                    className="dropdown-item"
+                    className={styles.dropdown_item}
                     onClick={() => setDesktopMenuOpen(false)}
                 >
                     <img
@@ -106,23 +98,23 @@ const Navbar: React.FC = () => {
         if (!mobileMenuOpen || mobileSubOpen) return null;
 
         return (
-            <div className="dropdown-menu">
-                <div className="dropdown-profile">
-                    <div className="profile-circle-small" />
+            <div className={styles.dropdown_menu}>
+                <div className={styles.dropdown_profile}>
+                    <div className={styles.profile_circle_small} />
                     <span>My Profile</span>
 
                     <button
-                        className="arrow-btn forward-btn"
+                        className={`${styles.arrow_btn} ${styles.forward_btn}`}
                         onClick={openMobileSubMenu}
                     >
                         <img src={forwardArrowIcon} alt="forward" />
                     </button>
                 </div>
 
-                <div className="dropdown-divider" />
+                <div className={styles.dropdown_divider} />
 
                 <button
-                    className="dropdown-item"
+                    className={styles.dropdown_item}
                     onClick={() => setMobileMenuOpen(false)}
                 >
                     <img src={smallScreenFriendsChatIcon} alt="friends" />
@@ -130,7 +122,7 @@ const Navbar: React.FC = () => {
                 </button>
 
                 <button
-                    className="dropdown-item"
+                    className={styles.dropdown_item}
                     onClick={() => setMobileMenuOpen(false)}
                 >
                     <img src={smallScreenGroupChatIcon} alt="group" />
@@ -140,15 +132,14 @@ const Navbar: React.FC = () => {
         );
     };
 
-    // sub menu
     const desktopSubMenu: MenuRenderer = () => {
         if (!desktopMenuOpen || !desktopSubOpen) return null;
 
         return (
-            <div className="dropdown-menu dropdown-right">
-                <div className="dropdown-profile">
+            <div className={`${styles.dropdown_menu} ${styles.dropdown_right}`}>
+                <div className={styles.dropdown_profile}>
                     <button
-                        className="arrow-btn back-btn"
+                        className={`${styles.arrow_btn} ${styles.back_btn}`}
                         onClick={closeDesktopSubMenu}
                     >
                         <img src={backwardArrowIcon} alt="back" />
@@ -157,11 +148,11 @@ const Navbar: React.FC = () => {
                     <span>My Profile</span>
                 </div>
 
-                <div className="dropdown-divider" />
+                <div className={styles.dropdown_divider} />
 
-                <div className="dropdown-item">Username</div>
-                <div className="dropdown-item">Email</div>
-                <div className="dropdown-item">UserId</div>
+                <div className={styles.dropdown_item}>Username</div>
+                <div className={styles.dropdown_item}>Email</div>
+                <div className={styles.dropdown_item}>UserId</div>
             </div>
         );
     };
@@ -170,10 +161,10 @@ const Navbar: React.FC = () => {
         if (!mobileMenuOpen || !mobileSubOpen) return null;
 
         return (
-            <div className="dropdown-menu">
-                <div className="dropdown-profile">
+            <div className={styles.dropdown_menu}>
+                <div className={styles.dropdown_profile}>
                     <button
-                        className="arrow-btn back-btn"
+                        className={`${styles.arrow_btn} ${styles.back_btn}`}
                         onClick={closeMobileSubMenu}
                     >
                         <img src={backwardArrowIcon} alt="back" />
@@ -182,21 +173,21 @@ const Navbar: React.FC = () => {
                     <span>My Profile</span>
                 </div>
 
-                <div className="dropdown-divider" />
+                <div className={styles.dropdown_divider} />
 
-                <div className="dropdown-item">Username</div>
-                <div className="dropdown-item">Email</div>
-                <div className="dropdown-item">UserId</div>
+                <div className={styles.dropdown_item}>Username</div>
+                <div className={styles.dropdown_item}>Email</div>
+                <div className={styles.dropdown_item}>UserId</div>
             </div>
         );
     };
 
     return (
-        <div className="navbar">
+        <div className={styles.navbar}>
             {/* LEFT */}
-            <div className="nav-left" ref={mobileMenuRef}>
+            <div className={styles.nav_left} ref={mobileMenuRef}>
                 <button
-                    className="icon-btn hamburger-btn"
+                    className={`${styles.icon_btn} ${styles.hamburger_btn}`}
                     onClick={() => setMobileMenuOpen((prev) => !prev)}
                 >
                     <img
@@ -208,19 +199,23 @@ const Navbar: React.FC = () => {
                 {mobileMenu()}
                 {mobileSubMenu()}
 
-                <button className="icon-btn desktop-only">
+                <button className={`${styles.icon_btn} ${styles.desktop_only}`}>
                     <img src={GroupChatIcon} alt="group" title="Groups" />
                 </button>
 
-                <button className="icon-btn desktop-only">
+                <button className={`${styles.icon_btn} ${styles.desktop_only}`}>
                     <img src={FriendChatIcon} alt="friends" title="Friends" />
                 </button>
             </div>
 
             {/* CENTER */}
-            <div className={`nav-center ${searchOpen ? "search-open" : ""}`}>
+            <div
+                className={`${styles.nav_center} ${
+                    searchOpen ? styles.search_open : ""
+                }`}
+            >
                 <button
-                    className="icon-btn search-toggle-btn"
+                    className={`${styles.icon_btn} ${styles.search_toggle_btn}`}
                     onClick={() => setSearchOpen((prev) => !prev)}
                 >
                     <img
@@ -229,7 +224,7 @@ const Navbar: React.FC = () => {
                     />
                 </button>
 
-                <div className="search-box">
+                <div className={styles.search_box}>
                     <img src={userSearchIcon} alt="search" />
                     <input placeholder="Enter Friend's ID" />
                     <img src={InfoIcon} alt="info" title="Each ID is unique" />
@@ -237,9 +232,12 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* RIGHT */}
-            <div className="nav-right desktop-only" ref={desktopMenuRef}>
+            <div
+                className={`${styles.nav_right} ${styles.desktop_only}`}
+                ref={desktopMenuRef}
+            >
                 <div
-                    className="profile-circle"
+                    className={styles.profile_circle}
                     onClick={() => setDesktopMenuOpen((prev) => !prev)}
                 />
 

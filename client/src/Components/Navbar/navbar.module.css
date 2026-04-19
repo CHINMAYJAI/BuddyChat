@@ -14,14 +14,14 @@
 }
 
 /* ================= LEFT SECTION ================= */
-.nav-left {
+.nav_left {
     display: flex;
     align-items: center;
     gap: 12px;
     position: relative;
 }
 
-.icon-btn {
+.icon_btn {
     width: 40px;
     height: 40px;
     display: flex;
@@ -35,24 +35,24 @@
     flex-shrink: 0;
 }
 
-.icon-btn svg {
+.icon_btn svg {
     width: 20px;
     height: 20px;
     fill: #555;
 }
 
-.icon-btn:hover {
+.icon_btn:hover {
     background: #e2e8f0;
     transform: scale(1.05);
 }
 
 /* Mobile hamburger */
-.hamburger-btn {
+.hamburger_btn {
     display: none;
 }
 
 /* ================= DROPDOWN ================= */
-.dropdown-menu {
+.dropdown_menu {
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
@@ -68,7 +68,7 @@
     animation: fadeSlideDown 0.2s ease;
 }
 
-.dropdown-menu.dropdown-right {
+.dropdown_menu.dropdown_right {
     left: auto;
     right: 0;
 }
@@ -86,7 +86,7 @@
 }
 
 /* ================= PROFILE ROW ================= */
-.dropdown-profile {
+.dropdown_profile {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -97,7 +97,7 @@
 }
 
 /* Profile circle */
-.profile-circle-small {
+.profile_circle_small {
     width: 34px;
     height: 34px;
     border-radius: 50%;
@@ -106,7 +106,7 @@
 }
 
 /* ================= ARROW BUTTONS ================= */
-.arrow-btn {
+.arrow_btn {
     border: none;
     background: transparent;
     cursor: pointer;
@@ -115,36 +115,36 @@
     justify-content: center;
 }
 
-.forward-btn {
+.forward_btn {
     margin-left: auto;
 }
 
-.back-btn {
+.back_btn {
     margin-right: 6px;
 }
 
 /* shared arrow icon style */
-.arrow-btn img {
+.arrow_btn img {
     width: 18px;
     height: 18px;
     opacity: 0.7;
     transition: 0.2s;
 }
 
-.arrow-btn:hover img {
+.arrow_btn:hover img {
     opacity: 1;
     transform: scale(1.1);
 }
 
 /* ================= DIVIDER ================= */
-.dropdown-divider {
+.dropdown_divider {
     height: 1px;
     background: #f1f5f9;
     margin: 4px 0;
 }
 
 /* ================= DROPDOWN ITEMS ================= */
-.dropdown-item {
+.dropdown_item {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -161,19 +161,19 @@
     width: 100%;
 }
 
-.dropdown-item svg {
+.dropdown_item svg {
     width: 20px;
     height: 20px;
     fill: #555;
     flex-shrink: 0;
 }
 
-.dropdown-item:hover {
+.dropdown_item:hover {
     background: #f1f5f9;
 }
 
 /* ================= CENTER SECTION ================= */
-.nav-center {
+.nav_center {
     flex: 1;
     display: flex;
     align-items: center;
@@ -183,11 +183,11 @@
 }
 
 /* Search toggle (mobile only) */
-.search-toggle-btn {
+.search_toggle_btn {
     display: none;
 }
 
-.search-box {
+.search_box {
     width: 100%;
     max-width: 420px;
     height: 42px;
@@ -201,7 +201,7 @@
     overflow: hidden;
 }
 
-.search-box input {
+.search_box input {
     flex: 1;
     border: none;
     outline: none;
@@ -211,32 +211,32 @@
     min-width: 0;
 }
 
-.search-icon svg,
-.help-icon svg {
+.search_icon svg,
+.help_icon svg {
     width: 18px;
     height: 18px;
     fill: #888;
     flex-shrink: 0;
 }
 
-.help-icon {
+.help_icon {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.help-icon:hover svg {
+.help_icon:hover svg {
     fill: #333;
 }
 
 /* ================= RIGHT SECTION ================= */
-.nav-right {
+.nav_right {
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.profile-circle {
+.profile_circle {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -250,42 +250,42 @@
     flex-shrink: 0;
 }
 
-.profile-circle img {
+.profile_circle img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.profile-circle:hover {
+.profile_circle:hover {
     transform: scale(1.05);
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 600px) {
-    .hamburger-btn {
+    .hamburger_btn {
         display: flex;
     }
 
-    .desktop-only {
+    .desktop_only {
         display: none !important;
     }
 
-    .nav-center {
+    .nav_center {
         flex: 1;
         justify-content: flex-end;
         padding: 0 8px;
     }
 
-    .search-toggle-btn {
+    .search_toggle_btn {
         display: flex;
     }
 
-    .search-box {
+    .search_box {
         display: none;
         width: 0;
     }
 
-    .nav-center.search-open {
+    .nav_center.search_open {
         position: absolute;
         left: 0;
         right: 0;
@@ -298,12 +298,12 @@
         justify-content: center;
     }
 
-    .nav-center.search-open .search-toggle-btn {
+    .nav_center.search_open .search_toggle_btn {
         display: flex;
         flex-shrink: 0;
     }
 
-    .nav-center.search-open .search-box {
+    .nav_center.search_open .search_box {
         display: flex;
         flex: 1;
         max-width: none;

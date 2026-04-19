@@ -1,9 +1,9 @@
-.delete-icon {
+.delete_icon {
     width: 1em;
     height: 1em;
 }
 
-.bin-button {
+.bin_button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,10 +17,10 @@
     flex-shrink: 0;
 }
 
-.bin-button:hover {
+.bin_button:hover {
     background-color: rgb(255, 0, 0);
 }
 
-.bin-button:active {
+.bin_button:active {
     transform: scale(0.9);
 }
