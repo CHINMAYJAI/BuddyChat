@@ -1,0 +1,103 @@
+.card {
+    width: fit-content;
+    background-color: #f2f3f7;
+    border-radius: 0.75em;
+    cursor: pointer;
+    transition: ease 0.2s;
+    box-shadow:
+        1em 1em 1em #d8dae0b1,
+        -0.75em -0.75em 1em #ffffff;
+    border: 1.5px solid #f2f3f7;
+    padding: clamp(0.5em, 2vw, 0.875em) clamp(0.75em, 3vw, 1.375em)
+        clamp(0.6em, 2vw, 1em);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.25em, 1vw, 0.5em);
+    font-size: clamp(0.75rem, 2vw, 1rem); /* base scale anchor */
+}
+
+.card:hover {
+    background-color: #d3ddf1;
+    border: 1.5px solid #1677ff;
+}
+
+/* notification system */
+.notification_indicator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.375em;
+}
+
+.notification_dot {
+    width: 0.625em;
+    height: 0.625em;
+    background-color: #ff0000;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.notification_unread {
+    font-size: 0.8em;
+    color: #777;
+    margin: 0;
+}
+
+/* middle: avatar name delete */
+.middle_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75em;
+}
+
+.avatar {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: #e2e8f0;
+    flex-shrink: 0;
+}
+
+.text_content {
+    font-size: 1em;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    flex: 1;
+}
+
+/* bottom: visit button */
+.button_wrap {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.primary_cta {
+    font-size: 0.9375em;
+    background-color: transparent;
+    font-weight: 600;
+    color: #1677ff;
+    border: none;
+    border-radius: 1.5em;
+    cursor: pointer;
+    padding: 0;
+}
+
+.primary_cta:hover {
+    text-decoration: underline;
+}
+
+/* small screens */
+@media (max-width: 480px) {
+    .card {
+        font-size: 0.75rem;
+    }
+}
+
+/* extra small screens */
+@media (max-width: 320px) {
+    .card {
+        font-size: 0.65rem;
+    }
+}
